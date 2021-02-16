@@ -10,7 +10,7 @@ namespace Kito\Loader;
  *
  * @category Loader
  * @package  Kito\Loader
- * @author  The Kito <thekito@blktech.com>  
+ * @author   The Kito <thekito@blktech.com>  
  * @license  http://opensource.org/licenses/gpl-license.php GNU GPL
  * @link     https://github.com/TheKito/Loader
  */
