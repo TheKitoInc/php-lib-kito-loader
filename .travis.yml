@@ -31,12 +31,18 @@ jobs:
       php: 7.2
       env: CODE_STANDARD
       script:
-        - phpcs
-        #- ./vendor/bin/phpcs
+        - export PHPCS_DIR=/tmp/phpcs
+        - export PHPCOMPAT_DIR=/tmp/PHPCompatibility
+        - git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR
+        - $PHPCS_DIR/bin/phpcs --config-set installed_paths $PHPCOMPAT_DIR
+        - phpenv rehash
+        - $PHPCS_DIR/bin/phpcs .
 
     - stage: Metrics and quality
+      php: 7.2
       env: PHPSTAN
       script:
-        - phpstan analyse        
-        #- ./vendor/bin/phpstan analyse
+        - export PHPSTAN_DIR=/tmp/PHPSTAN
+        - git clone -b master --depth 1 https://github.com/phpstan/phpstan.git $PHPSTAN_DIR        
+        - $PHPSTAN_DIR/phpstan analyse -c phpstan.neon           
         
