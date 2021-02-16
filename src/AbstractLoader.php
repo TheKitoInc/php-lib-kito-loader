@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-/*
+/**
  * AbstractLoader
  */
 
@@ -24,7 +24,7 @@ abstract class AbstractLoader
     /**
      * Installs this class loader on the SPL autoload stack.
      * 
-     * @param bool $prepend If true, register will prepend the autoloader in queue instead of appending it.
+     * @param bool $prepend If true, register will prepend the autoloader in queue
      * 
      * @return self self class 
      */
