@@ -3,12 +3,6 @@ declare(strict_types=1);
 
 /**
  * AbstractLoader
- */
-
-namespace Kito\Loader;
-
-/**
- * AbstractLoader
  * Loader skeleton class
  * php version 7.2
  *
@@ -18,6 +12,9 @@ namespace Kito\Loader;
  * @license  http://opensource.org/licenses/gpl-license.php GNU GPL
  * @link     https://github.com/TheKito/Loader
  */
+
+namespace Kito\Loader;
+
 abstract class AbstractLoader
 {
 
