@@ -1,18 +1,12 @@
 <?php
-
 declare(strict_types=1);
+
+namespace Kito\Loader;
 
 /**
  * AbstractLoader
  * Loader skeleton class
  * php version 7.1
- *
- */
-
-namespace Kito\Loader;
-
-/**
- * Description of AbstractLoader
  *
  * @author   TheKito <TheKito@blktech.com>  
  * @category Loader
