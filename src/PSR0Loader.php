@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-/*
+/**
  * PSR0Loader
  */
 
@@ -20,7 +20,7 @@ namespace Kito\Loader;
  */
 class PSR0Loader extends AbstractLoader
 {
-    private $libPath;
+    private $_libPath;
     
     /**
      * PSR0Loader Constructor
@@ -28,9 +28,9 @@ class PSR0Loader extends AbstractLoader
      * @param string $libPath base path to map namespace
      *     
      */    
-    public function __construct(string $libPath)
+    public function __construct(string $_libPath)
     {
-        $this->libPath = $libPath;
+        $this->_libPath = $_libPath;
     }    
     
     /**
@@ -43,7 +43,7 @@ class PSR0Loader extends AbstractLoader
     public function loadClass(string $className): bool
     {
         $className = ltrim($className, '\\');
-        $fileName = $this->libPath . '/';
+        $fileName = $this->_libPath . '/';
         $namespace = '';
         if ($lastNsPos = strrpos($className, '\\')) {
             $namespace = substr($className, 0, $lastNsPos);
