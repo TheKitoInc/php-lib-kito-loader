@@ -10,21 +10,22 @@ namespace Kito\Loader;
  *
  * @category Loader
  * @package  Kito\Loader
- * @author   The Kito <TheKito@blktech.com>  
+ * @author   The Kito <thekito@blktech.com>  
  * @license  http://opensource.org/licenses/gpl-license.php GNU GPL
  * @link     https://github.com/TheKito/Loader
  */
-abstract class AbstractLoader 
+abstract class AbstractLoader
 {
 
     /**
      * Installs this class loader on the SPL autoload stack.
      * 
-     * @param bool $prepend If true, register will prepend the autoloader on the autoload queue instead of appending it.
+     * @param bool $prepend If true, register will prepend the autoloader in queue instead of appending it.
      * 
      * @return self self class 
      */
-    public function register(bool $prepend = false): self {
+    public function register(bool $prepend = false): self
+    {
         spl_autoload_register(array($this, 'loadClass'), true, $prepend);
         return $this;
     }
@@ -34,7 +35,8 @@ abstract class AbstractLoader
      * 
      * @return self self class 
      */
-    public function unregister(): self {
+    public function unregister(): self
+    {
         spl_autoload_unregister(array($this, 'loadClass'));
         return $this;
     }
