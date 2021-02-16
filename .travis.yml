@@ -19,7 +19,8 @@ before_install:
 
 #install: travis_retry composer install
 
-script: vendor/bin/phpunit
+#script: vendor/bin/phpunit
+script: phpunit
 
 jobs:
   allow_failures:
