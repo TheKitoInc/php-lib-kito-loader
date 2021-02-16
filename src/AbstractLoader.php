@@ -8,19 +8,19 @@ namespace Kito\Loader;
  * Loader skeleton class
  * php version 7.1
  *
- * @author   TheKito <TheKito@blktech.com>  
  * @category Loader
  * @package  Kito\Loader
+ * @author   The Kito <TheKito@blktech.com>  
  * @license  http://opensource.org/licenses/gpl-license.php GNU GPL
  * @link     https://github.com/TheKito/Loader
- * 
  */
-abstract class AbstractLoader {
+abstract class AbstractLoader 
+{
 
     /**
      * Installs this class loader on the SPL autoload stack.
      * 
-     * @param bool $prepend         If true, register will prepend the autoloader on the autoload queue instead of appending it.
+     * @param bool $prepend If true, register will prepend the autoloader on the autoload queue instead of appending it.
      * 
      * @return self self class 
      */
