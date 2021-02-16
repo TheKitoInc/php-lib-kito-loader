@@ -3,12 +3,6 @@ declare(strict_types=1);
 
 /**
  * PSR0Loader
- */
-
-namespace Kito\Loader;
-
-/**
- * PSR0Loader
  * Loader old style
  * php version 7.2
  *
@@ -18,6 +12,9 @@ namespace Kito\Loader;
  * @license  http://opensource.org/licenses/gpl-license.php GNU GPL
  * @link     https://github.com/TheKito/Loader
  */
+
+namespace Kito\Loader;
+
 class PSR0Loader extends AbstractLoader
 {
     private $_libPath;
@@ -25,7 +22,7 @@ class PSR0Loader extends AbstractLoader
     /**
      * PSR0Loader Constructor
      * 
-     * @param string $libPath base path to map namespace
+     * @param string $_libPath base path to map namespace
      *     
      */    
     public function __construct(string $_libPath)
