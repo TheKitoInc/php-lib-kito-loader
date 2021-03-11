@@ -55,15 +55,14 @@ abstract class AbstractLoader
     public function loadClassHelper(string $className): bool
     {
         $this->loadClass($className);
-        
+
         return class_exists($className, false);
     }
-    
+
     /**
      * Find and load class file.
      *
      * @param string $className Class name with namespace
-     *     
      */
     abstract protected function loadClass(string $className): void;
 }

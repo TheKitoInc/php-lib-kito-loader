@@ -28,14 +28,14 @@ class VirtualExceptionLoader extends AbstractLoader
      */
     protected function loadClass(string $className): void
     {
-        if (substr($className, -9) != 'Exception')
+        if (substr($className, -9) != 'Exception') {
             return;
-                
+        }
+
 //        if (count($_)>0) {
 //            eval('namespace ' . pathinfo($className,PATHINFO_DIRNAME) . '{ class ' . pathinfo($className,PATHINFO_FILENAME) . ' extends '.$extends.' {} }');
 //        } else {
 //            eval('class ' . pathinfo($className,PATHINFO_FILENAME) . ' extends '.$extends.' {}');
 //        }
-                
     }
 }

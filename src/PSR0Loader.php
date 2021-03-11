@@ -35,7 +35,6 @@ class PSR0Loader extends AbstractLoader
      * Find and load class file.
      *
      * @param string $className Class name with namespace
-     *   
      */
     protected function loadClass(string $className): void
     {
