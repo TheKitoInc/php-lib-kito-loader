@@ -35,10 +35,9 @@ class PSR0Loader extends AbstractLoader
      * Find and load class file.
      *
      * @param string $className Class name with namespace
-     *
-     * @return bool Return true if class file its found and loaded
+     *   
      */
-    public function loadClass(string $className): bool
+    protected function loadClass(string $className): void
     {
         $className = ltrim($className, '\\');
         $fileName = $this->_libPath.'/';
@@ -51,15 +50,13 @@ class PSR0Loader extends AbstractLoader
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className).'.php';
 
         if (!file_exists($fileName)) {
-            return false;
+            return;
         }
 
         if (!is_readable($fileName)) {
-            return false;
+            return;
         }
 
         require $fileName;
-
-        return class_exists($className, false);
     }
 }

@@ -40,7 +40,7 @@ abstract class AbstractLoader
      */
     public function unregister(): self
     {
-        spl_autoload_unregister([$this, 'loadClass']);
+        spl_autoload_unregister([$this, 'loadClassHelper']);
 
         return $this;
     }
@@ -52,5 +52,18 @@ abstract class AbstractLoader
      *
      * @return bool Return true if class file its found and loaded
      */
-    abstract public function loadClass(string $className): bool;
+    public function loadClassHelper(string $className): bool
+    {
+        $this->loadClass($className);
+        
+        return class_exists($className, false);
+    }
+    
+    /**
+     * Find and load class file.
+     *
+     * @param string $className Class name with namespace
+     *     
+     */
+    abstract protected function loadClass(string $className): void;
 }
