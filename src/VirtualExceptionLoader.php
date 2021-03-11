@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 /**
- * PSR0Loader
- * Loader old style
+ * VirtualExceptionLoader
+ * Create Generic Exception class in runtime
  * php version 7.2.
  *
  * @category Loader
