@@ -13,29 +13,45 @@ class AbstractLoaderTest extends TestCase
 
         return $path;
     }
-    
+
     /**
      * @depends testFileExists
-     */    
+     */
     public function testClassExists(string $path): void
-    {       
+    {
         include_once $path;
-        $this->assertTrue(class_exists(Kito\Loader\AbstractLoader::class));        
+        $this->assertTrue(class_exists(Kito\Loader\AbstractLoader::class));
     }
-    
+
     /**
      * @depends testClassExists
-     */    
+     */
     public function testParsePathEmpty(): void
-    {                      
-        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath(''),'');        
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath(''), '');
+    }
+
+    /**
+     * @depends testClassExists
+     */
+    public function testParsePathSingle(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('TheClass'), DIRECTORY_SEPARATOR.'TheClass');
     }
     
     /**
      * @depends testClassExists
-     */    
-    public function testParsePathSingle(): void
-    {                      
-        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('abc'),DIRECTORY_SEPARATOR.'abc');        
+     */
+    public function testParsePathVendorNameSpace(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('TheVendor/TheClass'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'TheClass');
     }    
+    
+    /**
+     * @depends testClassExists
+     */
+    public function testParsePathVendorPackageNameSpace(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('TheVendor/Package/TheClass'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'Package'.DIRECTORY_SEPARATOR.'TheClass');
+    }        
 }
