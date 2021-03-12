@@ -42,6 +42,14 @@ class AbstractLoaderTest extends TestCase
     /**
      * @depends testClassExists
      */
+    public function testParsePathSingleDirty(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('////TheClass////'), DIRECTORY_SEPARATOR.'TheClass');
+    }
+
+    /**
+     * @depends testClassExists
+     */
     public function testParsePathVendorNameSpace(): void
     {
         $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('TheVendor/TheClass'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'TheClass');
@@ -50,8 +58,24 @@ class AbstractLoaderTest extends TestCase
     /**
      * @depends testClassExists
      */
+    public function testParsePathVendorNameSpaceDirty(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('////TheVendor////TheClass////'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'TheClass');
+    }
+    
+    /**
+     * @depends testClassExists
+     */
     public function testParsePathVendorPackageNameSpace(): void
     {
         $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('TheVendor/Package/TheClass'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'Package'.DIRECTORY_SEPARATOR.'TheClass');
     }        
+    
+    /**
+     * @depends testClassExists
+     */
+    public function testParsePathVendorPackageNameSpaceDirty(): void
+    {
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('////TheVendor////Package////TheClass////'), DIRECTORY_SEPARATOR.'TheVendor'.DIRECTORY_SEPARATOR.'Package'.DIRECTORY_SEPARATOR.'TheClass');
+    }            
 }
