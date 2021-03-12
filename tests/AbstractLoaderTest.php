@@ -23,4 +23,19 @@ class AbstractLoaderTest extends TestCase
         $this->assertTrue(class_exists(Kito\Loader\AbstractLoader::class));        
     }
     
+    /**
+     * @depends testClassExists
+     */    
+    public function testParsePathEmpty(): void
+    {                      
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath(''),'');        
+    }
+    
+    /**
+     * @depends testClassExists
+     */    
+    public function testParsePathSingle(): void
+    {                      
+        $this->assertEquals(Kito\Loader\AbstractLoader::parsePath('abc'),DIRECTORY_SEPARATOR.'abc');        
+    }    
 }
