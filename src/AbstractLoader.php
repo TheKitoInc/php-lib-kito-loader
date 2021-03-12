@@ -55,7 +55,7 @@ abstract class AbstractLoader
      */
     public function register(bool $prepend = false): self
     {
-        spl_autoload_register([$this, 'loadClass'], true, $prepend);
+        spl_autoload_register([$this, 'loadClassHelper'], true, $prepend);
 
         return $this;
     }
