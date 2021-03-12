@@ -8,7 +8,7 @@ class DummyLoaderTest extends TestCase
 {
     /**
      * @Depends AbstractLoaderTest::testClassExists
-     */    
+     */
     public function testFileExists(): string
     {
         $path = __DIR__.'/../src/DummyLoader.php';
@@ -16,14 +16,13 @@ class DummyLoaderTest extends TestCase
 
         return $path;
     }
-    
+
     /**
      * @depends testFileExists
-     */    
+     */
     public function testClassExists(string $path): void
-    {       
+    {
         include_once $path;
-        $this->assertTrue(class_exists(Kito\Loader\DummyLoader::class));        
+        $this->assertTrue(class_exists(Kito\Loader\DummyLoader::class));
     }
-    
 }
