@@ -19,15 +19,13 @@ namespace Kito\Loader;
 
 class DummyLoader extends AbstractLoader
 {
-
     /**
-     * Print Dummy Load Class
+     * Print Dummy Load Class.
      *
      * @param string $className Class name with namespace
-     *   
      */
     protected function loadClass(string $className): void
     {
-        error_log("Dummy Loading: " . $className);
+        error_log('Dummy Loading: '.$className);
     }
 }
