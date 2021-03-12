@@ -19,6 +19,7 @@ class AbstractLoaderTest extends TestCase
      */    
     public function testClassExists(string $path): string
     {       
+        include_once $path;
         $this->assertTrue(class_exists(Kito\Loader\AbstractLoader::class));        
     }
     
