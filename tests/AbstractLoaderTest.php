@@ -13,4 +13,13 @@ class AbstractLoaderTest extends TestCase
 
         return $path;
     }
+    
+    /**
+     * @depends testFileExists
+     */    
+    public function testClassExists(string $path): string
+    {       
+        $this->assertClassExists('Kito\Loader\AbstractLoader');        
+    }
+    
 }
