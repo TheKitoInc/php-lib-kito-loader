@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
-class AbstractLoaderTest extends TestCase
+class DummyLoaderTest extends TestCase
 {
     /**
      * @Depends AbstractLoaderTest::testClassExists
