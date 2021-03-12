@@ -20,6 +20,33 @@ namespace Kito\Loader;
 abstract class AbstractLoader
 {
     /**
+     * Normalize and clean path
+     *
+     * @param string $path to clean
+     *
+     * @return string Return clean path
+     */    
+    public static function parsePath(string $path): string
+    {        
+        $_path = str_replace(chr(92), DIRECTORY_SEPARATOR, 
+            str_replace('/', DIRECTORY_SEPARATOR, $path)
+        );
+        
+        $_newPath = '';
+        foreach (explode(DIRECTORY_SEPARATOR, $_path) as $_)
+        {
+            $_ = trim($_);
+            
+            if(!empty($_))
+            {
+                $_newPath .= DIRECTORY_SEPARATOR . $_;
+            }
+        }
+        
+        return $_newPath;
+    }
+    
+    /**
      * Installs this class loader on the SPL autoload stack.
      *
      * @param bool $prepend If true, register will prepend the autoloader in queue
@@ -54,7 +81,7 @@ abstract class AbstractLoader
      */
     public function loadClassHelper(string $className): bool
     {
-        $this->loadClass($className);
+        $this->loadClass(self::parsePath($className));
 
         return class_exists($className, false);
     }
