@@ -31,11 +31,12 @@ class PSR0Loader extends AbstractLoader {
     }
 
     /**
-     * Find and load class file.
+     * Find class file.
      *
      * @param string $className Class name with namespace
-     */
-    protected function loadClass(string $className): void {
+     */    
+    public function getFileName(string $className): string
+    {
         $className = ltrim($className, '\\');
         $fileName = $this->_libPath . '/';
         $namespace = '';
@@ -44,7 +45,16 @@ class PSR0Loader extends AbstractLoader {
             $className = substr($className, $lastNsPos + 1);
             $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
-        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+        return $fileName . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';                
+    }
+    
+    /**
+     * Find and load class file.
+     *
+     * @param string $className Class name with namespace
+     */
+    protected function loadClass(string $className): void {
+        $fileName = $this->getFileName($className);
 
         if (!file_exists($fileName)) {
             return;
