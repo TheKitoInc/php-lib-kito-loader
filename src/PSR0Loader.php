@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Kito\Loader;
 
-class PSR0Loader extends AbstractLoader
-{
+class PSR0Loader extends AbstractLoader {
+
     private $_libPath;
 
     /**
@@ -26,8 +26,7 @@ class PSR0Loader extends AbstractLoader
      *
      * @param string $_libPath base path to map namespace
      */
-    public function __construct(string $_libPath)
-    {
+    public function __construct(string $_libPath) {
         $this->_libPath = $_libPath;
     }
 
@@ -36,17 +35,16 @@ class PSR0Loader extends AbstractLoader
      *
      * @param string $className Class name with namespace
      */
-    protected function loadClass(string $className): void
-    {
+    protected function loadClass(string $className): void {
         $className = ltrim($className, '\\');
-        $fileName = $this->_libPath.'/';
+        $fileName = $this->_libPath . '/';
         $namespace = '';
         if ($lastNsPos = strrpos($className, '\\')) {
             $namespace = substr($className, 0, $lastNsPos);
             $className = substr($className, $lastNsPos + 1);
-            $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace).DIRECTORY_SEPARATOR;
+            $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
-        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className).'.php';
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
         if (!file_exists($fileName)) {
             return;
@@ -58,4 +56,9 @@ class PSR0Loader extends AbstractLoader
 
         require $fileName;
     }
+
+    public function getLibPath() {
+        return $this->_libPath;
+    }
+
 }
