@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 /**
- * BLKLoader
- * 
+ * BLKLoader.
+ *
  * php version 7.2.
  *
  * @category Loader
@@ -19,11 +19,12 @@ namespace Kito\Loader;
 
 class BLKLoader extends AbstractLoader
 {
-    const server = "https://sources.blktech.org";
-    
+    const server = 'https://sources.blktech.org';
+
     private $cacheLoader;
-    
-    public function __construct(PSR0Loader $cacheLoader) {
+
+    public function __construct(PSR0Loader $cacheLoader)
+    {
         $this->cacheLoader = $cacheLoader;
     }
 
@@ -31,12 +32,12 @@ class BLKLoader extends AbstractLoader
      * Get index url for from class.
      *
      * @param string $className Class name with namespace
-     */    
+     */
     public static function getClassURL(string $className): string
-    {        
-        return self::server . str_replace("\\", '/', self::parsePath($className));
+    {
+        return self::server.str_replace('\\', '/', self::parsePath($className));
     }
-    
+
     /**
      * Download class from repo using BLKSources index.
      *
@@ -44,28 +45,25 @@ class BLKLoader extends AbstractLoader
      */
     protected function loadClass(string $className): void
     {
-        if($this->cacheLoader->loadClassHelper($className))
-        {
+        if ($this->cacheLoader->loadClassHelper($className)) {
             return;
         }
-               
+
         $data = file_get_contents(self::getClassURL($className));
-        
-        if($data==false)
-        {
+
+        if ($data == false) {
             return;
         }
-        
+
         $file = $this->cacheLoader->getFileName($className);
         $dir = pathinfo($file, PATHINFO_DIRNAME);
-        
-        if(!file_exists($dir))
-        {
-            mkdir ($dir, 0777, true);
+
+        if (!file_exists($dir)) {
+            mkdir($dir, 0777, true);
         }
-        
+
         file_put_contents($file, $data);
-            
+
         $this->cacheLoader->loadClassHelper($className);
     }
 }
