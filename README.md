@@ -6,7 +6,7 @@ PHPLoaderLibs
     require_once PATH_LIB . '/Kito/Loader/AbstractLoader.php';
 
     require_once PATH_LIB . '/Kito/Loader/PSR0Loader.php';
-    $cacheLoader = new \Kito\Loader\PSR0Loader(__DIR__);
+    $cacheLoader = new \Kito\Loader\PSR0Loader(PATH_LIB);
     $cacheLoader->register();
 
     require_once PATH_LIB . '/Kito/Loader/BLKLoader.php';
