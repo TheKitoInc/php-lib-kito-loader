@@ -19,6 +19,7 @@ namespace Kito\Loader;
 
 abstract class AbstractLoader
 {
+
     /**
      * Normalize and clean path.
      *
@@ -29,17 +30,19 @@ abstract class AbstractLoader
     public static function parsePath(string $path): string
     {
         $_path = str_replace(
-            chr(92),
-            DIRECTORY_SEPARATOR,
-            str_replace('/', DIRECTORY_SEPARATOR, $path)
+                chr(92),
+                DIRECTORY_SEPARATOR,
+                str_replace('/', DIRECTORY_SEPARATOR, $path)
         );
 
         $_newPath = '';
-        foreach (explode(DIRECTORY_SEPARATOR, $_path) as $_) {
+        foreach (explode(DIRECTORY_SEPARATOR, $_path) as $_)
+        {
             $_ = trim($_);
 
-            if (!empty($_)) {
-                $_newPath .= DIRECTORY_SEPARATOR.$_;
+            if (!empty($_))
+            {
+                $_newPath .= DIRECTORY_SEPARATOR . $_;
             }
         }
 

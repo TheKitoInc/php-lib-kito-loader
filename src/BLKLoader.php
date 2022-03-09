@@ -19,6 +19,7 @@ namespace Kito\Loader;
 
 class BLKLoader extends AbstractLoader
 {
+
     const server = 'https://sources.blktech.org';
 
     private $cacheLoader;
@@ -35,7 +36,7 @@ class BLKLoader extends AbstractLoader
      */
     public static function getClassURL(string $className): string
     {
-        return self::server.str_replace('\\', '/', self::parsePath($className));
+        return self::server . str_replace('\\', '/', self::parsePath($className));
     }
 
     /**
@@ -45,20 +46,23 @@ class BLKLoader extends AbstractLoader
      */
     protected function loadClass(string $className): void
     {
-        if ($this->cacheLoader->loadClassHelper($className)) {
+        if ($this->cacheLoader->loadClassHelper($className))
+        {
             return;
         }
 
         $data = file_get_contents(self::getClassURL($className));
 
-        if ($data == false) {
+        if ($data == false)
+        {
             return;
         }
 
         $file = $this->cacheLoader->getFileName($className);
         $dir = pathinfo($file, PATHINFO_DIRNAME);
 
-        if (!file_exists($dir)) {
+        if (!file_exists($dir))
+        {
             mkdir($dir, 0777, true);
         }
 
@@ -66,4 +70,5 @@ class BLKLoader extends AbstractLoader
 
         $this->cacheLoader->loadClassHelper($className);
     }
+
 }

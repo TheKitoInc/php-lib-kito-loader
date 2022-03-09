@@ -19,6 +19,7 @@ namespace Kito\Loader;
 
 class VirtualExceptionLoader extends AbstractLoader
 {
+
     /**
      * Load virtual class file.
      *
@@ -28,7 +29,8 @@ class VirtualExceptionLoader extends AbstractLoader
      */
     protected function loadClass(string $className): void
     {
-        if (substr($className, -9) != 'Exception') {
+        if (substr($className, -9) != 'Exception')
+        {
             return;
         }
 
@@ -38,4 +40,5 @@ class VirtualExceptionLoader extends AbstractLoader
 //            eval('class ' . pathinfo($className,PATHINFO_FILENAME) . ' extends '.$extends.' {}');
 //        }
     }
+
 }
