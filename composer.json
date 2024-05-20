@@ -3,13 +3,13 @@
     "description": "Tiny class loaders",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^10.5",
         "friendsofphp/php-cs-fixer": "^2.18",
         "phpstan/phpstan": "^0.12.85",
         "phpstan/phpstan-strict-rules": "^0.12.9",
         "phpstan/phpstan-phpunit": "^0.12.18"
     },
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "TheKito",
@@ -25,5 +25,8 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "test": "phpunit"
+    }
 }
