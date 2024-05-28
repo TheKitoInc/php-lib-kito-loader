@@ -11,7 +11,7 @@ class DummyLoaderTest extends TestCase
      */
     public function testFileExists(): string
     {
-        $path = __DIR__.'/../src/DummyLoader.php';
+        $path = __DIR__.'/../src/Kito/Loader/DummyLoader.php';
         $this->assertFileExists($path);
 
         return $path;
